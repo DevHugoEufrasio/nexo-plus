@@ -1,0 +1,290 @@
+# Banco de Dados
+
+## Informações do Documento
+
+| Item | Descrição |
+|------|-----------|
+| Projeto | Nexo+ |
+| Versão | 1.0 |
+| Data | Julho/2026 |
+| Autor | Hugo Eufrasio |
+| Status | Em desenvolvimento |
+
+---
+
+# Objetivo
+
+Este documento apresenta a modelagem inicial do banco de dados do projeto Nexo+.
+
+O banco será responsável por armazenar todas as informações da plataforma, garantindo integridade, segurança e desempenho.
+
+Banco de dados previsto:
+
+- PostgreSQL
+
+---
+
+# Entidades do Sistema
+
+A seguir estão as principais entidades da aplicação.
+
+## Restaurante
+
+Representa o restaurante que utilizará a plataforma.
+
+### Campos
+
+| Campo | Tipo | Obrigatório |
+|--------|------|-------------|
+| id | UUID | Sim |
+| nome | VARCHAR(150) | Sim |
+| cnpj | VARCHAR(18) | Sim |
+| telefone | VARCHAR(20) | Sim |
+| email | VARCHAR(150) | Sim |
+| endereco | VARCHAR(255) | Sim |
+| horario_funcionamento | VARCHAR(100) | Sim |
+| taxa_entrega | DECIMAL(10,2) | Sim |
+| ativo | BOOLEAN | Sim |
+
+---
+
+## Usuário
+
+Representa os usuários do sistema.
+
+### Campos
+
+| Campo | Tipo |
+|--------|------|
+| id | UUID |
+| nome | VARCHAR(150) |
+| email | VARCHAR(150) |
+| senha | VARCHAR(255) |
+| perfil | VARCHAR(30) |
+| restaurante_id | UUID |
+| ativo | BOOLEAN |
+
+---
+
+## Cliente
+
+Armazena os clientes do restaurante.
+
+### Campos
+
+| Campo | Tipo |
+|--------|------|
+| id | UUID |
+| nome | VARCHAR(150) |
+| telefone | VARCHAR(20) |
+| email | VARCHAR(150) |
+| data_nascimento | DATE |
+| ativo | BOOLEAN |
+
+---
+
+## Categoria
+
+Agrupa os produtos.
+
+### Campos
+
+| Campo | Tipo |
+|--------|------|
+| id | UUID |
+| nome | VARCHAR(100) |
+
+---
+
+## Produto
+
+Produtos vendidos pelo restaurante.
+
+### Campos
+
+| Campo | Tipo |
+|--------|------|
+| id | UUID |
+| nome | VARCHAR(150) |
+| descricao | TEXT |
+| preco | DECIMAL(10,2) |
+| imagem | VARCHAR(255) |
+| disponivel | BOOLEAN |
+| categoria_id | UUID |
+
+---
+
+## Pedido
+
+Representa um pedido realizado.
+
+### Campos
+
+| Campo | Tipo |
+|--------|------|
+| id | UUID |
+| cliente_id | UUID |
+| usuario_id | UUID |
+| data_pedido | TIMESTAMP |
+| status | VARCHAR(30) |
+| valor_total | DECIMAL(10,2) |
+| taxa_entrega | DECIMAL(10,2) |
+
+---
+
+## ItemPedido
+
+Relaciona produtos ao pedido.
+
+### Campos
+
+| Campo | Tipo |
+|--------|------|
+| id | UUID |
+| pedido_id | UUID |
+| produto_id | UUID |
+| quantidade | INTEGER |
+| preco_unitario | DECIMAL(10,2) |
+
+---
+
+## Pagamento
+
+Armazena os pagamentos.
+
+### Campos
+
+| Campo | Tipo |
+|--------|------|
+| id | UUID |
+| pedido_id | UUID |
+| forma_pagamento | VARCHAR(30) |
+| valor | DECIMAL(10,2) |
+| data_pagamento | TIMESTAMP |
+| status | VARCHAR(30) |
+
+---
+
+## Campanha
+
+Campanhas promocionais.
+
+### Campos
+
+| Campo | Tipo |
+|--------|------|
+| id | UUID |
+| nome | VARCHAR(150) |
+| descricao | TEXT |
+| data_inicio | DATE |
+| data_fim | DATE |
+| ativa | BOOLEAN |
+
+---
+
+# Relacionamentos
+
+## Restaurante
+
+- Possui vários usuários.
+- Possui vários produtos.
+- Possui vários pedidos.
+
+---
+
+## Cliente
+
+- Pode possuir vários pedidos.
+
+---
+
+## Categoria
+
+- Possui vários produtos.
+
+---
+
+## Pedido
+
+- Pertence a um cliente.
+- Possui vários itens.
+- Possui um pagamento.
+
+---
+
+## Produto
+
+- Pertence a uma categoria.
+
+---
+
+# Relacionamento Geral
+
+```text
+Restaurante
+     │
+     ├──────── Usuários
+     │
+     ├──────── Produtos
+     │              │
+     │              └──── Categoria
+     │
+     └──────── Pedidos
+                    │
+          ┌─────────┴──────────┐
+          │                    │
+      Cliente            Pagamento
+          │
+          └──── ItemPedido ─── Produto
+```
+
+---
+
+# Índices previstos
+
+Serão criados índices para:
+
+- Telefone do cliente
+- E-mail do usuário
+- Status do pedido
+- Data do pedido
+
+---
+
+# Tecnologias
+
+Banco de Dados
+
+- PostgreSQL
+
+ORM
+
+- Spring Data JPA
+- Hibernate
+
+Ferramenta de migração
+
+- Flyway
+
+---
+
+# Próximos passos
+
+Nas próximas versões serão adicionadas novas tabelas para:
+
+- Endereços
+- Entregadores
+- Cupons de desconto
+- Programa de fidelidade
+- Notificações
+- Integração com WhatsApp
+- Inteligência Artificial
+- Logs de auditoria
+
+---
+
+# Controle de Versões
+
+| Versão | Data | Responsável | Alterações |
+|---------|------|-------------|------------|
+| 1.0 | Julho/2026 | Hugo Eufrasio | Criação inicial da modelagem do banco de dados |
