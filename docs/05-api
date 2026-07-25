@@ -1,0 +1,483 @@
+# API REST
+
+## Informações do Documento
+
+| Item | Descrição |
+|------|-----------|
+| Projeto | Nexo+ |
+| Versão | 1.0 |
+| Data | Julho/2026 |
+| Autor | Hugo Eufrasio |
+| Status | Em desenvolvimento |
+
+---
+
+# Objetivo
+
+Este documento define a estrutura da API REST do projeto Nexo+.
+
+A API será responsável pela comunicação entre o frontend e o backend, permitindo o gerenciamento de usuários, restaurantes, clientes, produtos, pedidos e demais funcionalidades da plataforma.
+
+---
+
+# Tecnologias
+
+- Java 21
+- Spring Boot
+- Spring Security
+- Spring Data JPA
+- JWT
+- PostgreSQL
+- Maven
+
+---
+
+# URL Base
+
+```
+http://localhost:8080/api/v1
+```
+
+---
+
+# Padrão da API
+
+A API seguirá os princípios REST.
+
+Métodos utilizados:
+
+| Método | Finalidade |
+|---------|------------|
+| GET | Consultar informações |
+| POST | Criar registros |
+| PUT | Atualizar registros |
+| DELETE | Excluir registros |
+
+---
+
+# Autenticação
+
+A autenticação será realizada utilizando JWT (JSON Web Token).
+
+Após realizar o login, o usuário receberá um Token que deverá ser enviado nas próximas requisições.
+
+Exemplo:
+
+```
+Authorization: Bearer eyJhbGciOi...
+```
+
+---
+
+# Endpoints
+
+## Autenticação
+
+### Login
+
+POST
+
+```
+/auth/login
+```
+
+Descrição
+
+Realiza autenticação do usuário.
+
+---
+
+### Recuperar senha
+
+POST
+
+```
+/auth/recuperar-senha
+```
+
+---
+
+# Restaurante
+
+### Listar restaurante
+
+GET
+
+```
+/restaurantes
+```
+
+---
+
+### Buscar restaurante
+
+GET
+
+```
+/restaurantes/{id}
+```
+
+---
+
+### Cadastrar restaurante
+
+POST
+
+```
+/restaurantes
+```
+
+---
+
+### Atualizar restaurante
+
+PUT
+
+```
+/restaurantes/{id}
+```
+
+---
+
+# Usuários
+
+### Listar usuários
+
+GET
+
+```
+/usuarios
+```
+
+---
+
+### Buscar usuário
+
+GET
+
+```
+/usuarios/{id}
+```
+
+---
+
+### Criar usuário
+
+POST
+
+```
+/usuarios
+```
+
+---
+
+### Atualizar usuário
+
+PUT
+
+```
+/usuarios/{id}
+```
+
+---
+
+### Excluir usuário
+
+DELETE
+
+```
+/usuarios/{id}
+```
+
+---
+
+# Clientes
+
+### Listar clientes
+
+GET
+
+```
+/clientes
+```
+
+---
+
+### Buscar cliente
+
+GET
+
+```
+/clientes/{id}
+```
+
+---
+
+### Cadastrar cliente
+
+POST
+
+```
+/clientes
+```
+
+---
+
+### Atualizar cliente
+
+PUT
+
+```
+/clientes/{id}
+```
+
+---
+
+### Excluir cliente
+
+DELETE
+
+```
+/clientes/{id}
+```
+
+---
+
+# Categorias
+
+GET
+
+```
+/categorias
+```
+
+POST
+
+```
+/categorias
+```
+
+PUT
+
+```
+/categorias/{id}
+```
+
+DELETE
+
+```
+/categorias/{id}
+```
+
+---
+
+# Produtos
+
+GET
+
+```
+/produtos
+```
+
+POST
+
+```
+/produtos
+```
+
+PUT
+
+```
+/produtos/{id}
+```
+
+DELETE
+
+```
+/produtos/{id}
+```
+
+---
+
+# Pedidos
+
+GET
+
+```
+/pedidos
+```
+
+POST
+
+```
+/pedidos
+```
+
+GET
+
+```
+/pedidos/{id}
+```
+
+PUT
+
+```
+/pedidos/{id}
+```
+
+---
+
+### Alterar Status
+
+PATCH
+
+```
+/pedidos/{id}/status
+```
+
+---
+
+# Pagamentos
+
+GET
+
+```
+/pagamentos
+```
+
+POST
+
+```
+/pagamentos
+```
+
+GET
+
+```
+/pagamentos/{id}
+```
+
+---
+
+# Dashboard
+
+GET
+
+```
+/dashboard
+```
+
+Retorna indicadores como:
+
+- Total de pedidos
+- Faturamento
+- Ticket médio
+- Clientes ativos
+- Clientes inativos
+
+---
+
+# Campanhas
+
+GET
+
+```
+/campanhas
+```
+
+POST
+
+```
+/campanhas
+```
+
+PUT
+
+```
+/campanhas/{id}
+```
+
+DELETE
+
+```
+/campanhas/{id}
+```
+
+---
+
+# Códigos HTTP
+
+| Código | Significado |
+|---------|-------------|
+| 200 | Sucesso |
+| 201 | Registro criado |
+| 204 | Sem conteúdo |
+| 400 | Requisição inválida |
+| 401 | Não autenticado |
+| 403 | Acesso negado |
+| 404 | Recurso não encontrado |
+| 500 | Erro interno |
+
+---
+
+# Estrutura de Resposta
+
+## Sucesso
+
+```json
+{
+  "success": true,
+  "message": "Operação realizada com sucesso.",
+  "data": {}
+}
+```
+
+---
+
+## Erro
+
+```json
+{
+  "success": false,
+  "message": "Recurso não encontrado.",
+  "errors": []
+}
+```
+
+---
+
+# Versionamento
+
+A API utilizará versionamento na URL.
+
+Exemplo:
+
+```
+/api/v1
+```
+
+Futuras versões:
+
+```
+/api/v2
+/api/v3
+```
+
+---
+
+# Próximas Funcionalidades
+
+- Integração com WhatsApp
+- Integração com PIX
+- Integração com Mercado Pago
+- Integração com iFood
+- Inteligência Artificial
+- Notificações em tempo real
+
+---
+
+# Controle de Versões
+
+| Versão | Data | Responsável | Alterações |
+|---------|------|-------------|------------|
+| 1.0 | Julho/2026 | Hugo Eufrasio | Criação inicial da documentação da API |
