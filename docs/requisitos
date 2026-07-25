@@ -1,0 +1,288 @@
+# Requisitos do Sistema
+
+## Informações do Documento
+
+| Item | Descrição |
+|------|-----------|
+| Projeto | Nexo+ |
+| Versão | 1.0 |
+| Data | Julho/2026 |
+| Autor | Hugo Eufrasio |
+| Status | Em desenvolvimento |
+
+---
+
+# Objetivo
+
+Este documento descreve os requisitos funcionais e não funcionais do sistema Nexo+, uma plataforma CRM voltada para restaurantes, lanchonetes, pizzarias, hamburguerias e estabelecimentos de delivery.
+
+Seu objetivo é garantir que todas as funcionalidades necessárias para o funcionamento do sistema estejam documentadas antes do início do desenvolvimento.
+
+---
+
+# Requisitos Funcionais
+
+Os requisitos funcionais representam tudo aquilo que o sistema deverá ser capaz de realizar.
+
+## Módulo de Autenticação
+
+### RF001 - Login
+
+O sistema deverá permitir que usuários autenticados realizem login utilizando e-mail e senha.
+
+---
+
+### RF002 - Recuperação de senha
+
+O sistema deverá permitir que o usuário solicite a recuperação de senha através do e-mail cadastrado.
+
+---
+
+### RF003 - Controle de acesso
+
+O sistema deverá possuir diferentes níveis de acesso de acordo com o perfil do usuário.
+
+Exemplo:
+
+- Administrador
+- Gerente
+- Atendente
+
+---
+
+# Módulo Restaurante
+
+### RF004 - Cadastro de restaurante
+
+O sistema deverá permitir cadastrar um restaurante contendo:
+
+- Nome
+- CNPJ
+- Endereço
+- Telefone
+- Horário de funcionamento
+- Taxa de entrega padrão
+
+---
+
+### RF005 - Alteração de dados
+
+O administrador poderá editar todas as informações do restaurante.
+
+---
+
+# Módulo Clientes
+
+### RF006 - Cadastro de clientes
+
+O sistema deverá permitir cadastrar clientes contendo:
+
+- Nome
+- Telefone
+- E-mail
+- Data de nascimento
+
+---
+
+### RF007 - Histórico de compras
+
+O sistema deverá armazenar todo o histórico de pedidos realizados por cada cliente.
+
+---
+
+### RF008 - Clientes inativos
+
+O sistema deverá identificar clientes que não realizam pedidos há determinado período.
+
+---
+
+# Módulo Produtos
+
+### RF009 - Cadastro de produtos
+
+O sistema deverá permitir cadastrar produtos.
+
+Informações:
+
+- Nome
+- Categoria
+- Descrição
+- Preço
+- Imagem
+- Disponibilidade
+
+---
+
+### RF010 - Categorias
+
+O sistema deverá permitir organizar produtos por categorias.
+
+Exemplo:
+
+- Pizzas
+- Lanches
+- Bebidas
+- Sobremesas
+
+---
+
+# Módulo Pedidos
+
+### RF011 - Criar pedido
+
+O sistema deverá permitir criar pedidos.
+
+---
+
+### RF012 - Alterar status
+
+Cada pedido poderá possuir os seguintes status:
+
+- Recebido
+- Em preparo
+- Saiu para entrega
+- Entregue
+- Cancelado
+
+---
+
+### RF013 - Cálculo automático da entrega
+
+O sistema deverá calcular automaticamente a taxa de entrega conforme regras configuradas.
+
+---
+
+# Módulo Financeiro
+
+### RF014 - Registro de pagamentos
+
+O sistema deverá registrar os pagamentos realizados.
+
+---
+
+### RF015 - Formas de pagamento
+
+O sistema deverá aceitar:
+
+- PIX
+- Dinheiro
+- Cartão de Crédito
+- Cartão de Débito
+
+---
+
+# Módulo Dashboard
+
+### RF016 - Indicadores
+
+O sistema deverá apresentar indicadores como:
+
+- Total de pedidos
+- Faturamento
+- Ticket médio
+- Clientes ativos
+- Clientes inativos
+
+---
+
+### RF017 - Relatórios
+
+O sistema deverá gerar relatórios de vendas.
+
+---
+
+# Módulo CRM
+
+### RF018 - Campanhas
+
+O sistema deverá permitir criar campanhas promocionais.
+
+---
+
+### RF019 - Promoções
+
+O sistema deverá enviar promoções para clientes específicos.
+
+---
+
+### RF020 - Fidelização
+
+O sistema deverá identificar clientes frequentes para campanhas de fidelização.
+
+---
+
+# Requisitos Não Funcionais
+
+## RNF001 - Segurança
+
+O sistema deverá utilizar autenticação baseada em JWT.
+
+---
+
+## RNF002 - Banco de Dados
+
+O sistema utilizará PostgreSQL.
+
+---
+
+## RNF003 - API
+
+A comunicação entre frontend e backend será realizada através de API REST.
+
+---
+
+## RNF004 - Tempo de resposta
+
+As principais operações deverão responder em até 2 segundos.
+
+---
+
+## RNF005 - Responsividade
+
+O sistema deverá funcionar corretamente em:
+
+- Computadores
+- Tablets
+- Smartphones
+
+---
+
+## RNF006 - Escalabilidade
+
+A arquitetura deverá permitir crescimento do sistema sem necessidade de grandes alterações estruturais.
+
+---
+
+## Tecnologias previstas
+
+### Backend
+
+- Java
+- Spring Boot
+- Spring Security
+- Spring Data JPA
+- Maven
+
+### Banco de Dados
+
+- PostgreSQL
+
+### Frontend
+
+- React
+- TypeScript
+- Tailwind CSS
+
+### Infraestrutura
+
+- Docker
+- Git
+- GitHub
+
+---
+
+# Controle de Versões
+
+| Versão | Data | Responsável | Alterações |
+|---------|------|-------------|------------|
+| 1.0 | Julho/2026 | Hugo Eufrasio | Criação inicial do documento |
