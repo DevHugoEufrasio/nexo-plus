@@ -1,0 +1,232 @@
+# Regras de Negócio
+
+## Informações do Documento
+
+| Item | Descrição |
+|------|-----------|
+| Projeto | Nexo+ |
+| Versão | 1.0 |
+| Data | Julho/2026 |
+| Autor | Hugo Eufrasio |
+| Status | Em desenvolvimento |
+
+---
+
+# Objetivo
+
+Este documento descreve as regras de negócio do Nexo+, definindo o comportamento esperado da plataforma para garantir que os processos dos restaurantes sejam executados corretamente.
+
+As regras aqui documentadas deverão ser respeitadas durante o desenvolvimento do sistema.
+
+---
+
+# RN001 - Cadastro de Restaurante
+
+Cada restaurante poderá possuir apenas um cadastro principal.
+
+---
+
+# RN002 - Cadastro de Usuários
+
+Todo usuário deverá estar vinculado a um restaurante.
+
+Um usuário não poderá acessar informações de outro restaurante.
+
+---
+
+# RN003 - Controle de Acesso
+
+Os usuários possuirão níveis de permissão.
+
+Perfis previstos:
+
+- Administrador
+- Gerente
+- Atendente
+
+Cada perfil terá permissões específicas dentro do sistema.
+
+---
+
+# RN004 - Cadastro de Clientes
+
+O telefone deverá ser único para cada cliente.
+
+Caso um telefone já esteja cadastrado, o sistema deverá reutilizar o cadastro existente.
+
+---
+
+# RN005 - Produtos
+
+Produtos poderão estar:
+
+- Disponíveis
+- Indisponíveis
+
+Produtos indisponíveis não poderão ser adicionados aos pedidos e aparecer ao cliente.
+
+---
+
+# RN006 - Pedidos
+
+Todo pedido deverá possuir pelo menos um produto.
+
+Não será permitido finalizar pedidos vazios.
+
+---
+
+# RN007 - Status do Pedido
+
+O pedido deverá seguir obrigatoriamente a seguinte sequência:
+
+Recebido
+
+↓
+
+Em preparo
+
+↓
+
+Saiu para entrega
+
+↓
+
+Entregue
+
+Caso necessário, o pedido poderá ser cancelado antes da entrega.
+
+---
+
+# RN008 - Cancelamento
+
+Pedidos entregues não poderão ser cancelados.
+
+---
+
+# RN009 - Pagamentos
+
+O pedido poderá ser pago utilizando:
+
+- PIX
+- Dinheiro
+- Cartão de Crédito
+- Cartão de Débito
+
+O sistema deverá registrar a forma de pagamento utilizada.
+
+---
+
+# RN010 - Taxa de Entrega
+
+A taxa de entrega poderá ser calculada utilizando:
+
+- Distância
+- Valor fixo
+
+O restaurante poderá escolher o método desejado.
+
+---
+
+# RN011 - Histórico do Cliente
+
+Todo pedido realizado ficará registrado permanentemente no histórico do cliente.
+
+Essas informações serão utilizadas para análises futuras.
+
+---
+
+# RN012 - Clientes Inativos
+
+O sistema deverá identificar clientes que não realizam pedidos há determinado período configurado pelo restaurante.
+
+Exemplo:
+
+- 30 dias
+- 60 dias
+- 90 dias
+
+---
+
+# RN013 - Campanhas
+
+Campanhas promocionais poderão ser direcionadas para grupos específicos de clientes.
+
+Exemplos:
+
+- Clientes inativos
+- Clientes frequentes
+- Clientes aniversariantes
+
+---
+
+# RN014 - Fidelização
+
+O sistema poderá classificar clientes de acordo com sua frequência de compras.
+
+Exemplo:
+
+- Bronze
+- Prata
+- Ouro
+- Diamante
+
+Essa classificação poderá ser utilizada em campanhas futuras.
+
+---
+
+# RN015 - Relatórios
+
+Os indicadores apresentados no Dashboard deverão considerar apenas pedidos concluídos, exceto quando especificado pelo usuário.
+
+---
+
+# RN016 - Exclusão de Dados
+
+Clientes que possuírem pedidos registrados não poderão ser excluídos definitivamente.
+
+O sistema poderá realizar apenas a inativação do cadastro.
+
+---
+
+# RN017 - Auditoria
+
+Todas as alterações importantes deverão registrar:
+
+- Usuário responsável
+- Data
+- Hora
+- Tipo da alteração
+
+---
+
+# RN018 - Segurança
+
+Usuários somente poderão acessar informações autorizadas pelo seu perfil de acesso.
+
+---
+
+# RN019 - Disponibilidade
+
+O sistema deverá impedir novos pedidos quando o restaurante estiver marcado como fechado.
+
+---
+
+# RN020 - Escalabilidade
+
+As regras deverão permitir a inclusão de novos módulos sem comprometer os já existentes.
+
+---
+
+# Observações
+
+Este documento será atualizado conforme novas funcionalidades forem adicionadas ao projeto.
+
+Todas as regras descritas aqui deverão ser consideradas durante o desenvolvimento do backend e da modelagem do banco de dados.
+
+---
+
+# Controle de Versões
+
+| Versão | Data | Responsável | Alterações |
+|---------|------|-------------|------------|
+| 1.0 | Julho/2026 | Hugo Eufrasio | Criação inicial do documento |
